@@ -2,18 +2,18 @@
 
 namespace PickingBug {
 
-    //SET TEST MODE: can only test gesture recognizer or getVisualTreeElements one at a time (gesture recognizer blocks get VisualTreeElements on Timer otherwise)
+    //BUG DESCRIPTION:
+        //Whether by TapGestureRecognizer or GetVisualTreeElements, Border cannot catch clicks unless it has a background assigned.
+        //Set project with three options below (object type, whether background assigned, whether testing by tap gesture or timer running GetVisualTreeElements).
+        //Note that you will get 3 outputs for objects found at position in all cases except:
+        //If (ObjectToClickType == "Border" && hasBackground == false), the Border is not found.
+
+
+    //SET TEST MODE: can only test TapGestureRecognizer or GetVisualTreeElements one at a time (gesture recognizer blocks get VisualTreeElements on Timer otherwise)
     enum TestMode {
         GestureRecognizer,
         GetVisualTreeElements
     }
-
-    //BUG DESCRIPTION:
-        //Whether by TapGestureRecognizer or GetVisualTreeElements, Border cannot catch clicks unless it has a background assigned.
-        //Set project with three options below (object type, whether background assigned, whether testing by tap gesture or timer running GetVisualTreeElements)
-        //Note that you will get 3 outputs for objects found at position in all cases except...
-        //If (ObjectToClickType == "Border" && hasBackground == false), the Border is not found
-
     //BUG PROJECT:
     public partial class App : Application {
 
